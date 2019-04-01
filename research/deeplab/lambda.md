@@ -30,7 +30,7 @@ Running DeepLab on PASCAL VOC 2012 Semantic Segmentation Dataset
 **Download dataset and convert to TFRecord**
 
 ```bash
-# Takes about 30 mins
+# Takes about 2 hours
 cd deeplab/datasets
 sh download_and_convert_voc2012.sh
 ```
@@ -78,7 +78,7 @@ python deeplab/train.py \
     --decoder_output_stride=4 \
     --train_crop_size=513 \
     --train_crop_size=513 \
-    --train_batch_size=4 \
+    --train_batch_size=1 \
     --min_resize_value=513 \
     --max_resize_value=513 \
     --resize_factor=16 \
@@ -87,3 +87,24 @@ python deeplab/train.py \
     --train_logdir=${PATH_TO_TRAIN_DIR}\
     --dataset_dir=${PATH_TO_DATASET}
 ```
+
+**Memory Requirement (MiB)**
+
+
+| Batch Size  | Memory  |
+|---|---|
+| bs=1  | 4660 |
+| bs=2  | 8756 |
+| bs=4  | 16948  |
+| bs=8  | 23380  |
+| bs=16  |   |
+
+**Throughput (samples/sec)** 
+
+|   | 2060  | 2070  | 2080  |  2080 Ti | TitanRTX | V100 | Quadro RTX 6000 | Quadro RTX 8000 |
+|---|---|---|---|---|---|---|---|---|
+| bs=1  | 3.86  | 3.92  |   | 5.48  | 5.75  |   |   |   |
+| bs=2  |  4.48 | 4.50 |   | 6.45  |  6.92 |   |   |   |
+| bs=4  | OOM  | OOM  |   | 7.04  |  7.84 |   |   |   |
+| bs=8  | OOM  | OOM  |   |  OOM |  8.24 |   |   |   |
+| bs=16  | OOM | OOM  |   | OOM  |  OOM |   |   |   |
