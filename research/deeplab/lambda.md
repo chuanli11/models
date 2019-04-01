@@ -59,14 +59,14 @@ bash download_and_convert_ade20k.sh
 
 **Train**
 
-```bash/home/ubuntu/git/models/research/deeplab/datasets/ADE20K/tfrecord
+```bash
 # From tensorflow/models/research/
 
 export PATH_TO_TRAIN_DIR=`pwd`/deeplab/datasets/ADE20K/exp/train_on_train_set/train
 
 export PATH_TO_DATASET=`pwd`/deeplab/datasets/ADE20K/tfrecord
 
-python deeplab/train.py \
+CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
     --logtostderr \
     --training_number_of_steps=150000 \
     --train_split="train" \
