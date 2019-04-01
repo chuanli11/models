@@ -1,0 +1,3 @@
+venv-deeplab/*
+deeplab/datasets/ADE20K/*
+deeplab/datasets/pascal_voc_seg/*
