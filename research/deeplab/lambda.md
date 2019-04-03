@@ -76,8 +76,8 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
 
 **Throughput (samples/sec)** 
 
-|   | 2060  | 2070  | 2080  |  2080 Ti | TitanRTX | V100 | Quadro RTX 6000 | Quadro RTX 8000 |
-|---|---|---|---|---|---|---|---|---|
+|   | 2060  | 2070  | 2080  |  1080 Ti | 2080 Ti | TitanRTX | Quadro RTX 6000 | V100 | Quadro RTX 8000 |
+|---|---|---|---|---|---|---|---|---|---|
 | bs=1  | 3.80  | 4.15  |   | 5.85 | 6.03  |   |   |   |
 | bs=2  | 4.4  | 4.82 |   | 6.52 |  7.3 |   |   |   |
 | bs=4  | OOM  | OOM |   | 7.6 |  8.4 |   |   |   |
@@ -151,8 +151,8 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
 
 **Throughput (samples/sec)** 
 
-|   | 2060  | 2070  | 2080  |  2080 Ti | TitanRTX | V100 | Quadro RTX 6000 | Quadro RTX 8000 |
-|---|---|---|---|---|---|---|---|---|
+|   | 2060  | 2070  | 2080  |  1080 Ti | 2080 Ti | TitanRTX | Quadro RTX 6000 | V100 | Quadro RTX 8000 |
+|---|---|---|---|---|---|---|---|---|---|
 | bs=1  | 3.86  | 3.92  |   | 5.48  | 5.75  |   |   |   |
 | bs=2  |  4.48 | 4.50 |   | 6.45  |  6.92 |   |   |   |
 | bs=4  | OOM  | OOM  |   | 7.04  |  7.84 |   |   |   |
