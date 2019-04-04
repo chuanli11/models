@@ -56,7 +56,7 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
     --decoder_output_stride=4 \
     --train_crop_size=513 \
     --train_crop_size=513 \
-    --train_batch_size=1 \
+    --train_batch_size=16 \
     --dataset="pascal_voc_seg" \
     --tf_initial_checkpoint=${PATH_TO_INITIAL_CHECKPOINT} \
     --train_logdir=${PATH_TO_TRAIN_DIR} \
@@ -68,33 +68,23 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
 
 | Batch Size  | Memory  |
 |---|---|
-| bs=1  | 8764 |
-| bs=2  | 8756 |
-| bs=4  | 16948 |
-| bs=8  |  23380 |
-| bs=16  |   |
+| bs=1  | 6GB |
+| bs=2  | 6GB |
+| bs=4  | 11GB |
+| bs=8  |  24GB |
+| bs=16  | 48GB  |
 
 **Throughput (samples/sec)** 
 
 |   | 2060  | 2070  | 2080  |  1080 Ti | 2080 Ti | TitanRTX | Quadro RTX 6000 | V100 | Quadro RTX 8000 |
 |---|---|---|---|---|---|---|---|---|---|
-| bs=1  | 3.80  | 4.15  |   | 5.85 | 6.03  |   |   |   |
-| bs=2  | 4.4  | 4.82 |   | 6.52 |  7.3 |   |   |   |
-| bs=4  | OOM  | OOM |   | 7.6 |  8.4 |   |   |   |
-| bs=8  | OOM  | OOM |   |  OOM | 9.01 |   |   |   |
-| bs=16  | OOM | OOM  |   | OOM  | OOM  |   |   |   |
+| bs=1  | 3.80  | 4.15  | 4.95  | 4.12   | 5.85 | 6.03  | 5.5  |   | 5.62  |
+| bs=2  | 4.4  | 4.82 | 5.80  |   4.80 | 6.52 |  7.3 |  6.50 |   | 6.92  |
+| bs=4  | OOM  | OOM | OOM  | 5.43   | 7.6 |  8.4 | 7.55  |   | 8.03 |
+| bs=8  | OOM  | OOM | OOM  |  OOM  | OOM | 9.01 | 8.02  |   | 8.40  |
+| bs=16  | OOM | OOM  | OOM  | OOM  | OOM  | OOM  | OOM  |   | 9.12  |
 
 
-Running DeepLab on Cityscapes Semantic Segmentation Dataset
-===
-**Download dataset and convert to TFRecord**
-
-Download the dataset beforehand by registering the [website](https://www.cityscapes-dataset.com/).
-
-```bash
-cd deeplab/datasets
-sh convert_cityscapes.sh
-```
 
 
 Running DeepLab on ADE20K Semantic Segmentation Dataset
@@ -128,7 +118,7 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
     --decoder_output_stride=4 \
     --train_crop_size=513 \
     --train_crop_size=513 \
-    --train_batch_size=1 \
+    --train_batch_size=16 \
     --min_resize_value=513 \
     --max_resize_value=513 \
     --resize_factor=16 \
@@ -143,18 +133,18 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
 
 | Batch Size  | Memory  |
 |---|---|
-| bs=1  | 4660 |
-| bs=2  | 8756 |
-| bs=4  | 16948  |
-| bs=8  | 23380  |
-| bs=16  |   |
+| bs=1  | 6GB |
+| bs=2  | 6GB |
+| bs=4  | 11GB  |
+| bs=8  | 24GB  |
+| bs=16  | 48GB |
 
 **Throughput (samples/sec)** 
 
 |   | 2060  | 2070  | 2080  |  1080 Ti | 2080 Ti | TitanRTX | Quadro RTX 6000 | V100 | Quadro RTX 8000 |
 |---|---|---|---|---|---|---|---|---|---|
-| bs=1  | 3.86  | 3.92  |   | 5.48  | 5.75  |   |   |   |
-| bs=2  |  4.48 | 4.50 |   | 6.45  |  6.92 |   |   |   |
-| bs=4  | OOM  | OOM  |   | 7.04  |  7.84 |   |   |   |
-| bs=8  | OOM  | OOM  |   |  OOM |  8.24 |   |   |   |
-| bs=16  | OOM | OOM  |   | OOM  |  OOM |   |   |   |
+| bs=1  | 3.86  | 3.92  | 4.15  | 3.78  | 5.48  | 5.75  | 5.02  |   | 5.44  |
+| bs=2  |  4.48 | 4.50 | 5.52  | 4.20  | 6.45  |  6.92 | 6.44  |   | 6.71  |
+| bs=4  | OOM  | OOM  |  OOM | 4.84  | 7.04  |  7.84 | 7.05  |   | 7.64  |
+| bs=8  | OOM  | OOM  | OOM  | OOM  |  OOM |  8.24 | 7.23  |   | 7.93  |
+| bs=16  | OOM | OOM  | OOM  | OOM  | OOM  |  OOM | OOM  |   | 8.42  |
