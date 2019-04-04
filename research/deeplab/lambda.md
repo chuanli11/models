@@ -87,6 +87,14 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
 
 
 
+**Time cost**
+GPU: Titan RTX
+Equation: training_number_of_steps / (3600 * samples_per_sec / bs)
+
+30000 / (3600 * 6.03 / 1 ) = 1.38 hours
+
+
+
 Running DeepLab on ADE20K Semantic Segmentation Dataset
 ===
 
@@ -148,3 +156,10 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
 | bs=4  | OOM  | OOM  |  OOM | 4.84  | 7.04  |  7.84 | 7.05  |   | 7.64  |
 | bs=8  | OOM  | OOM  | OOM  | OOM  |  OOM |  8.24 | 7.23  |   | 7.93  |
 | bs=16  | OOM | OOM  | OOM  | OOM  | OOM  |  OOM | OOM  |   | 8.42  |
+
+
+**Time cost**
+GPU: Titan RTX
+Equation: training_number_of_steps / (3600 * samples_per_sec / bs)
+
+150000 / (3600 * 7.84 / 4 ) = 21.25 hours
