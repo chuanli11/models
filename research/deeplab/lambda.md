@@ -72,7 +72,7 @@ CUDA_VISIBLE_DEVICES=0 python deeplab/train.py \
 | bs=2  | 6GB |
 | bs=4  | 11GB |
 | bs=8  |  24GB |
-| bs=16  | 48GB  |
+| bs=16  | 32GB  |
 
 **Throughput (samples/sec)** 
 
